@@ -63,6 +63,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      align-items: center;
       overflow-x: hidden;
       line-height: 1.6;
       position: relative;
@@ -135,12 +136,10 @@
       display: none;
     }
 
-    /* Main Container — natural flow, no fake min-height */
+    /* Main Container — natural flow, fills screen width */
     main {
-      flex: 1;
       width: 100%;
       max-width: 680px;
-      margin: 0 auto;
       padding: 0 1.25rem 2.5rem;
       z-index: 10;
     }
@@ -617,26 +616,27 @@
        ========================================================================== */
      @media (max-width: 600px) {
       main {
-        padding: 0 0.75rem 2rem;
+        padding: 0 1rem 2rem;
       }
 
       .page-header {
-        padding: 1.5rem 0 1rem;
+        padding: 1.75rem 0 1.25rem;
       }
 
       .logo-container {
-        width: 56px;
-        height: 56px;
-        margin-bottom: 0.75rem;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 0.85rem;
       }
 
       .logo-container i {
-        font-size: 1.6rem;
+        font-size: 1.7rem;
       }
 
       h1 {
-        font-size: 1.1rem;
-        line-height: 1.4;
+        font-size: 1.3rem;
+        line-height: 1.45;
+        padding: 0 0.25rem;
       }
 
       .search-card {
@@ -646,18 +646,31 @@
       }
 
       .search-label {
-        font-size: 0.9rem;
+        font-size: 1rem;
         margin-bottom: 1rem;
+        line-height: 1.5;
       }
 
       .search-input {
-        font-size: 1.15rem;
+        font-size: 1.2rem;
         padding: 0.95rem 1rem 0.95rem 2.8rem;
         letter-spacing: 2px;
       }
 
       .input-wrapper i {
         left: 1rem;
+      }
+
+      .guide-card {
+        padding: 1.25rem;
+      }
+
+      .guide-title {
+        font-size: 1rem;
+      }
+
+      .guide-list {
+        font-size: 0.9rem;
       }
 
       .admission-card-wrapper {
@@ -696,7 +709,7 @@
       }
 
       .info-label {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
       }
 
       .info-value {
@@ -720,6 +733,7 @@
       .btn-action {
         width: 100%;
         padding: 0.9rem;
+        font-size: 1rem;
       }
     }
 
@@ -729,7 +743,7 @@
         background: #ffffff;
         color: #000000;
       }
-      body::before, body::after, header, .search-card, .actions-panel, footer, .guide-card {
+      body::before, body::after, .page-header, .search-card, .actions-panel, footer, .guide-card {
         display: none !important;
       }
       main {
@@ -839,50 +853,49 @@
       filter: brightness(1.05);
     }
 
-    /* Floating Zalo Button for Constant Support Access */
+    /* Floating Zalo Button — Large, Always Visible, Accessible */
     .zalo-float {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 20px;
+      right: 16px;
       background: linear-gradient(135deg, #0068ff 0%, #0053cc 100%);
       color: white !important;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(0, 104, 255, 0.4);
+      gap: 0.55rem;
+      padding: 0 1.1rem 0 0.9rem;
+      height: 54px;
+      border-radius: 27px;
+      box-shadow: 0 4px 20px rgba(0, 104, 255, 0.45);
       z-index: 999;
       transition: var(--transition);
       cursor: pointer;
       text-decoration: none !important;
-      animation: pulse-zalo 2s infinite;
+      animation: pulse-zalo 2.5s infinite;
     }
     
     .zalo-float i {
-      font-size: 1.4rem;
-      margin-bottom: 2px;
+      font-size: 1.6rem;
+      flex-shrink: 0;
     }
     
     .zalo-float span {
-      font-size: 0.6rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      white-space: nowrap;
+      letter-spacing: 0.2px;
     }
     
     .zalo-float:hover {
-      transform: scale(1.1) translateY(-2px);
-      box-shadow: 0 6px 24px rgba(0, 104, 255, 0.6);
-      filter: brightness(1.1);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0, 104, 255, 0.6);
+      filter: brightness(1.08);
     }
     
     @keyframes pulse-zalo {
-      0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.6); }
-      70% { box-shadow: 0 0 0 15px rgba(0, 104, 255, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); }
+      0% { box-shadow: 0 4px 20px rgba(0, 104, 255, 0.45); }
+      50% { box-shadow: 0 4px 30px rgba(0, 104, 255, 0.75); }
+      100% { box-shadow: 0 4px 20px rgba(0, 104, 255, 0.45); }
     }
 
     /* Hide floating button in print mode */
@@ -1376,11 +1389,11 @@
 
   <!-- Floating Zalo Button for Constant Support Access -->
   <a href="https://zalo.me/g/jamolj6fbjzqsjylrarp" target="_blank" class="zalo-float" title="Hỗ trợ qua Zalo">
-    <svg viewBox="0 0 32 32" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 2px;">
+    <svg viewBox="0 0 32 32" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M16 2C8.268 2 2 7.373 2 14c0 3.518 1.78 6.666 4.7 8.82-.44 1.94-1.28 4.28-1.7 5.34-.14.34.06.7.4.58.54-.18 3.66-1.34 6.74-3.18a15.22 15.22 0 003.86.52c7.732 0 14-5.373 14-12S23.732 2 16 2z" fill="#ffffff"/>
       <path d="M11.5 19.5h9v-2h-5.26l5.26-5.24V10.5h-9v2h5.26l-5.26 5.24v1.76z" fill="#0068ff"/>
     </svg>
-    <span>Liên hệ</span>
+    <span>Hỏi đáp Zalo</span>
   </a>
 </body>
 </html>
