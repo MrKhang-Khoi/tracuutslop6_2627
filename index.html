@@ -733,6 +733,74 @@
         color: #10b981;
       }
     }
+
+    /* Modal Popup styles for Mobile Image Download */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 1rem;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    
+    .modal-content {
+      background: var(--primary-light);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      max-width: 480px;
+      width: 100%;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      position: relative;
+      animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .modal-image {
+      max-width: 100%;
+      max-height: 60vh;
+      object-fit: contain;
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .modal-instruction {
+      font-size: 0.9rem;
+      color: #38bdf8; /* light blue */
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+      line-height: 1.5;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.75rem;
+      border-radius: var(--radius-sm);
+      border: 1px dashed rgba(56, 189, 248, 0.3);
+    }
+    
+    .btn-modal-close {
+      background: var(--accent-gradient);
+      border: none;
+      color: var(--primary);
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: var(--transition);
+    }
+    
+    .btn-modal-close:hover {
+      filter: brightness(1.1);
+    }
   </style>
 </head>
 <body>
@@ -811,7 +879,7 @@
         <ul class="guide-list">
           <li>Số CCCD gồm 12 chữ số được in trên thẻ CCCD hoặc Giấy định danh cá nhân của học sinh.</li>
           <li>Hệ thống chỉ hiển thị kết quả đối với các hồ sơ đã có quyết định phê duyệt trúng tuyển chính thức.</li>
-          <li>Nếu thông tin tra cứu chưa chính xác hoặc gặp lỗi trong quá trình tra cứu, quý phụ huynh vui lòng liên hệ Hội đồng tuyển sinh để được hỗ trợ kịp thời.</li>
+          <li>Nếu thông tin tra cứu chưa chính xác hoặc gặp lỗi, quý phụ huynh vui lòng tham gia <a href="https://zalo.me/g/jamolj6fbjzqsjylrarp" target="_blank" style="color: var(--accent); font-weight: 700; text-decoration: underline;"><i class="fa-solid fa-comments"></i> Nhóm Zalo hỗ trợ giải đáp tuyển sinh</a> để được phản hồi nhanh nhất.</li>
         </ul>
       </div>
     </div>
@@ -1067,19 +1135,35 @@
         submitBtn.innerHTML = '<i class="fa-solid fa-image"></i> <span>Tải kết quả (Ảnh)</span>';
         submitBtn.disabled = false;
 
-        // Download action
-        const link = document.createElement('a');
+        const imgData = canvas.toDataURL('image/png');
         const studentName = document.getElementById('resHoTen').textContent.trim() || 'HocSinh';
-        link.download = `KetQuaTuyenSinh_${studentName.replace(/\s+/g, '_')}.png`;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
+        
+        // Phát hiện thiết bị di động (mobile/tablet/webview)
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+          // Hiển thị ảnh trong popup modal để phụ huynh nhấn giữ lưu trên di động
+          document.getElementById('modalDownloadedImage').src = imgData;
+          document.getElementById('imageModal').style.display = 'flex';
+        } else {
+          // Tải xuống trực tiếp trên máy tính
+          const link = document.createElement('a');
+          link.download = `KetQuaTuyenSinh_${studentName.replace(/\s+/g, '_')}.png`;
+          link.href = imgData;
+          link.click();
+        }
       }).catch(err => {
         console.error('Lỗi khi chụp hình thẻ:', err);
         card.style.cssText = originalStyle;
         submitBtn.innerHTML = '<i class="fa-solid fa-image"></i> <span>Tải kết quả (Ảnh)</span>';
         submitBtn.disabled = false;
-        alert('Tạo file ảnh thất bại. Bạn có thể sử dụng chức năng In để xuất ra file PDF thay thế.');
+        alert('Tạo file ảnh thất bại. Quý phụ huynh có thể sử dụng chức năng In để xuất ra file PDF thay thế.');
       });
+    }
+
+    // Đóng cửa sổ Modal ảnh
+    function closeImageModal() {
+      document.getElementById('imageModal').style.display = 'none';
     }
 
     // Form Submit Search Event Handler
@@ -1189,5 +1273,17 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
+
+  <!-- Modal Popup for Mobile Image Download -->
+  <div id="imageModal" class="modal-overlay" onclick="closeImageModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-instruction">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>Nếu bạn dùng điện thoại, hãy <b>nhấn giữ ảnh 2 giây</b> và chọn <b>"Lưu hình ảnh"</b> để tải về máy.</span>
+      </div>
+      <img id="modalDownloadedImage" class="modal-image" src="" alt="Kết quả tuyển sinh">
+      <button class="btn-modal-close" onclick="closeImageModal()">Đóng cửa sổ</button>
+    </div>
+  </div>
 </body>
 </html>
