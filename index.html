@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- SEO Meta Tags -->
+  <title>Cổng Tra Cứu Kết Quả Tuyển Sinh Lớp 6 | Năm học 2026 - 2027</title>
+  <meta name="description" content="Hệ thống tra cứu kết quả tuyển sinh vào lớp 6 năm học 2026 - 2027 dành cho phụ huynh và học sinh. Tra cứu nhanh chóng, chính xác và bảo mật bằng số CCCD.">
+  <meta name="keywords" content="tuyen sinh lop 6, tra cuu ket qua tuyen sinh, tuyen sinh 2026, tra cuu cccd">
+  
+  <!-- Google Fonts: Lexend & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons for visual enhancement -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- html2canvas for downloading result as image -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & VARIABLES
+       ========================================================================== */
+    :root {
+      --primary: #0f172a;       /* Slate 900 - Deep, professional background */
+      --primary-light: #1e293b; /* Slate 800 - Cards background */
+      --accent: #06b6d4;        /* Cyan 500 - Bright interactive accents */
+      --accent-glow: rgba(6, 182, 212, 0.15);
+      --accent-gradient: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+      --text-main: #f8fafc;     /* Slate 50 - High contrast text */
+      --text-muted: #94a3b8;    /* Slate 400 - Secondary text */
+      --success: #10b981;       /* Emerald 500 */
+      --error: #f43f5e;         /* Rose 500 */
+      --glass-bg: rgba(30, 41, 59, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --font-sans: 'Lexend', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Montserrat', sans-serif;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.3);
+      --shadow-accent: 0 0 20px rgba(6, 182, 212, 0.3);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Reset Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    /* Ambient Background Effects */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, rgba(0,0,0,0) 70%);
+      top: -100px;
+      right: -100px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, rgba(0,0,0,0) 70%);
+      bottom: -150px;
+      left: -150px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Header styling */
+    header {
+      padding: 2.5rem 1rem 1.5rem;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-accent);
+      animation: pulse-glow 3s infinite alternate;
+    }
+
+    .logo-container i {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1.45;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff 40%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+      padding: 0 1rem;
+    }
+
+    .subtitle {
+      display: none; /* Ẩn đi vì niên khóa đã gộp vào tiêu đề chính */
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
+      z-index: 10;
+    }
+
+    /* Form Card */
+    .search-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      margin-bottom: 2rem;
+    }
+
+    .search-card:hover {
+      border-color: rgba(6, 182, 212, 0.2);
+    }
+
+    .search-label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.6);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
+
+    .input-wrapper:focus-within {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-accent);
+    }
+
+    .input-wrapper i {
+      position: absolute;
+      left: 1.25rem;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .input-wrapper:focus-within i {
+      color: var(--accent);
+    }
+
+    .search-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 1.1rem 1.25rem 1.1rem 3.25rem;
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 1.2rem;
+      letter-spacing: 4px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .search-input::placeholder {
+      letter-spacing: 0;
+      font-weight: 400;
+      font-size: 1rem;
+      color: rgba(148, 163, 184, 0.5);
+    }
+
+    /* Clear Button */
+    .clear-btn {
+      position: absolute;
+      right: 1.25rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0.2rem;
+      display: none;
+      transition: var(--transition);
+    }
+
+    .clear-btn:hover {
+      color: var(--text-main);
+    }
+
+    /* Submit Button */
+    .btn-search {
+      width: 100%;
+      background: var(--accent-gradient);
+      border: none;
+      outline: none;
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      color: var(--primary);
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 1.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-search:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-accent);
+      filter: brightness(1.1);
+    }
+
+    .btn-search:active {
+      transform: translateY(0);
+    }
+
+    /* Status Notifications */
+    .status-container {
+      margin-top: 1.5rem;
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .status-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      background: rgba(30, 41, 59, 0.5);
+    }
+
+    .status-card.error {
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      background: rgba(244, 63, 94, 0.05);
+    }
+
+    .status-card.error i {
+      color: var(--error);
+      font-size: 1.4rem;
+    }
+
+    .status-card.error .status-msg {
+      color: #fda4af;
+      font-size: 0.95rem;
+    }
+
+    /* Loading Spinner */
+    .loader {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 2rem 0;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s infinite linear;
+    }
+
+    .loader-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      animation: pulse-opacity 1.5s infinite ease-in-out;
+    }
+
+    /* ==========================================================================
+       RESULT ADMISSION CARD (Premium UI)
+       ========================================================================== */
+    .result-container {
+      display: none;
+      animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .admission-card-wrapper {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .admission-card-header {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      padding: 1.75rem 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-header-logo {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-header-logo .school-year {
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+
+    .card-header-logo .doc-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    /* Decorative Badge "Đã Trúng Tuyển" */
+    .badge-admitted {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--success);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+    }
+
+    .admission-card-body {
+      padding: 2.25rem 2rem;
+    }
+
+    .student-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* For full width items in grid */
+    .grid-full-width {
+      grid-column: span 2;
+    }
+
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .info-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .info-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .info-value.highlight-name {
+      font-size: 1.4rem;
+      font-family: var(--font-serif);
+      color: #ffffff;
+      background: linear-gradient(120deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .admission-card-footer {
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      padding: 1.5rem 2rem;
+      background: rgba(15, 23, 42, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .admission-card-footer i {
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Actions Panel below Card */
+    .actions-panel {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .btn-action {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .btn-action.secondary {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--glass-border);
+      color: var(--text-main);
+    }
+
+    .btn-action.secondary:hover {
+      background: rgba(51, 65, 85, 0.8);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-action.primary {
+      background: var(--accent-gradient);
+      border: none;
+      color: var(--primary);
+    }
+
+    .btn-action.primary:hover {
+      filter: brightness(1.1);
+      box-shadow: var(--shadow-accent);
+      transform: translateY(-2px);
+    }
+
+    /* Info Guide for PHHS */
+    .guide-card {
+      background: rgba(30, 41, 59, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .guide-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .guide-list {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .guide-list li {
+      position: relative;
+      padding-left: 1.25rem;
+    }
+
+    .guide-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0.25rem;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Footer styling */
+    footer {
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      background-color: rgba(15, 23, 42, 0.6);
+      z-index: 10;
+    }
+
+    footer p {
+      margin-bottom: 0.25rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       KEYFRAMES ANIMATIONS
+       ========================================================================== */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse-glow {
+      from {
+        box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+      }
+      to {
+        box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+      }
+    }
+
+    @keyframes pulse-opacity {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* ==========================================================================
+       RESPONSIVE DESIGN BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 600px) {
+      header {
+        padding: 1.75rem 1rem 1rem;
+      }
+
+      .logo-container {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 0.75rem;
+      }
+
+      .logo-container i {
+        font-size: 1.6rem;
+      }
+
+      h1 {
+        font-size: 1.05rem;
+        line-height: 1.35;
+      }
+
+      .search-card {
+        padding: 1.5rem;
+        border-radius: var(--radius-md);
+      }
+
+      .search-input {
+        font-size: 1.1rem;
+        padding: 0.9rem 1rem 0.9rem 2.8rem;
+        letter-spacing: 2px;
+      }
+
+      .input-wrapper i {
+        left: 1rem;
+      }
+
+      .admission-card-header {
+        padding: 1.25rem 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .badge-admitted {
+        align-self: flex-start;
+      }
+
+      .admission-card-body {
+        padding: 1.5rem;
+      }
+
+      .student-info-grid {
+        grid-template-columns: 1fr;
+        gap: 1.1rem;
+      }
+
+      .grid-full-width {
+        grid-column: span 1;
+      }
+
+      .info-value.highlight-name {
+        font-size: 1.2rem;
+      }
+
+      .admission-card-footer {
+        padding: 1.25rem 1.5rem;
+      }
+
+      .actions-panel {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+
+    /* Print styling rules */
+    @media print {
+      body {
+        background: #ffffff;
+        color: #000000;
+      }
+      body::before, body::after, header, .search-card, .actions-panel, footer, .guide-card {
+        display: none !important;
+      }
+      main {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .result-container {
+        display: block !important;
+      }
+      .admission-card-wrapper {
+        border: 2px solid #000000;
+        box-shadow: none;
+        background: #ffffff;
+        color: #000000;
+      }
+      .admission-card-header {
+        background: #f1f5f9 !important;
+        border-bottom: 2px solid #000000;
+        color: #000000;
+      }
+      .card-header-logo .doc-title {
+        color: #000000;
+      }
+      .info-value.highlight-name {
+        color: #000000;
+        -webkit-text-fill-color: initial;
+      }
+      .info-label {
+        color: #475569;
+      }
+      .info-value {
+        color: #000000;
+      }
+      .badge-admitted {
+        border: 2px solid #10b981;
+        color: #10b981;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo-container">
+      <i class="fa-solid fa-graduation-cap"></i>
+    </div>
+    <h1>KẾT QUẢ TUYỂN SINH LỚP 6 NĂM HỌC 2026-2027<br>TRƯỜNG THCS CHU VĂN AN - XÃ ĐĂK HÀ - TỈNH QUẢNG NGÃI</h1>
+  </header>
+
+  <!-- Main Content Area -->
+  <main>
+    
+    <!-- Search Portal Panel -->
+    <div class="search-card" id="searchCard">
+      <label for="cccdInput" class="search-label">
+        Vui lòng nhập Số Căn cước công dân (CCCD) của học sinh để tra cứu kết quả tuyển sinh
+      </label>
+      
+      <form id="searchForm" onsubmit="handleSearch(event)">
+        <div class="input-wrapper">
+          <i class="fa-solid fa-id-card"></i>
+          <input 
+            type="text" 
+            id="cccdInput" 
+            class="search-input" 
+            placeholder="Nhập 12 số CCCD" 
+            maxlength="12"
+            pattern="\d{12}"
+            inputmode="numeric"
+            autocomplete="off"
+            required
+            oninput="validateInput(this)"
+          >
+          <button type="button" id="clearBtn" class="clear-btn" onclick="clearSearchInput()">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </button>
+        </div>
+        
+        <!-- Live Input Validation Hint -->
+        <div id="validationHint" style="font-size: 0.85rem; color: #fda4af; margin-top: 0.5rem; text-align: left; display: none; padding-left: 0.5rem; animation: fadeIn 0.3s ease;">
+          <i class="fa-solid fa-circle-info" style="margin-right: 0.25rem;"></i>
+          <span id="validationHintText">Số CCCD phải bao gồm 12 chữ số.</span>
+        </div>
+
+        <!-- Non-numeric Warning Alert -->
+        <div id="nonNumericAlert" style="font-size: 0.85rem; color: #f43f5e; margin-top: 0.5rem; text-align: left; display: none; padding-left: 0.5rem; animation: fadeIn 0.3s ease; font-weight: 600;">
+          <i class="fa-solid fa-triangle-exclamation" style="margin-right: 0.25rem;"></i>
+          <span>Cảnh báo: Chỉ được phép nhập ký tự số!</span>
+        </div>
+        
+        <button type="submit" id="submitBtn" class="btn-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>Tra cứu kết quả</span>
+        </button>
+      </form>
+      
+      <!-- Error Notifications -->
+      <div id="statusContainer" class="status-container">
+        <div class="status-card error">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <div class="status-msg" id="statusMessage">
+            Định dạng số CCCD không hợp lệ. Số CCCD phải bao gồm đúng 12 chữ số.
+          </div>
+        </div>
+      </div>
+      
+      <!-- Info Guide for PHHS -->
+      <div class="guide-card">
+        <div class="guide-title">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Lưu ý tra cứu</span>
+        </div>
+        <ul class="guide-list">
+          <li>Số CCCD gồm 12 chữ số được in trên thẻ CCCD hoặc Giấy định danh cá nhân của học sinh.</li>
+          <li>Hệ thống chỉ hiển thị kết quả đối với các hồ sơ đã có quyết định phê duyệt trúng tuyển chính thức.</li>
+          <li>Nếu thông tin tra cứu chưa chính xác hoặc gặp lỗi trong quá trình tra cứu, quý phụ huynh vui lòng liên hệ Hội đồng tuyển sinh để được hỗ trợ kịp thời.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Spinner Loader -->
+    <div id="loader" class="loader">
+      <div class="spinner"></div>
+      <div class="loader-text">Đang kết nối hệ thống dữ liệu tuyển sinh...</div>
+    </div>
+
+    <!-- Result Panel -->
+    <div id="resultContainer" class="result-container">
+      
+      <!-- Admission Card Card to Print/Save -->
+      <div class="admission-card-wrapper" id="admissionCard">
+        
+        <div class="admission-card-header">
+          <div class="card-header-logo">
+            <span class="school-year">Tuyển Sinh Niên Khóa 2026 - 2027</span>
+            <span class="doc-title">Giấy Xác Nhận Trúng Tuyển Lớp 6</span>
+          </div>
+          <div class="badge-admitted">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Đã Trúng Tuyển</span>
+          </div>
+        </div>
+        
+        <div class="admission-card-body">
+          <div class="student-info-grid">
+            
+            <div class="info-item grid-full-width">
+              <span class="info-label">Họ và tên học sinh</span>
+              <span class="info-value highlight-name" id="resHoTen">---</span>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Số CCCD / Mã định danh</span>
+              <span class="info-value" id="resCCCD">---</span>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Giới tính</span>
+              <span class="info-value" id="resGioiTinh">---</span>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Ngày sinh</span>
+              <span class="info-value" id="resNgaySinh">---</span>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Dân tộc</span>
+              <span class="info-value" id="resDanToc">---</span>
+            </div>
+            
+            <div class="info-item grid-full-width">
+              <span class="info-label">Trường Tiểu học hoàn thành</span>
+              <span class="info-value" id="resTruongTieuHoc">---</span>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="admission-card-footer">
+          <i class="fa-solid fa-seal-question"></i>
+          <div class="footer-note">
+            Giấy xác nhận này dùng để làm hồ sơ nhập học chính thức vào lớp 6. 
+            Mọi thắc mắc xin vui lòng liên hệ Ban tuyển sinh để được giải đáp.
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Action panel: Print / Download Image -->
+      <div class="actions-panel">
+        <button class="btn-action secondary" onclick="printResult()">
+          <i class="fa-solid fa-print"></i>
+          <span>In giấy xác nhận</span>
+        </button>
+        <button class="btn-action primary" onclick="downloadCardAsImage()">
+          <i class="fa-solid fa-image"></i>
+          <span>Tải kết quả (Ảnh)</span>
+        </button>
+        <button class="btn-action secondary" onclick="resetSearch()" style="background: rgba(6, 182, 212, 0.1); border: 1px solid var(--accent); color: var(--accent);">
+          <i class="fa-solid fa-rotate-left"></i>
+          <span>Tra cứu lại</span>
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Cổng thông tin tuyển sinh Lớp 6. Bảo lưu mọi quyền.</p>
+    <p>Dữ liệu được cập nhật tự động trực tuyến từ Sở Giáo dục và Đào tạo.</p>
+  </footer>
+
+  <!-- Application Logic -->
+  <script>
+    // ==========================================================================
+    // CONFIGURATION
+    // Dán URL Web App Google Apps Script đã triển khai của bạn tại đây
+    // ==========================================================================
+    const GOOGLE_SCRIPT_URL = atob("aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J3YXlyUmh2M1haWHNiQmZYM0ktaWx1bHRkNmFUS3JWUTV5UDFKYkk0RDJldnFxZkhINVY4bUZnd2tjLUxndkVmMFJ4QS9leGVj"); 
+
+    // Dữ liệu giả lập (Demo Data) lấy từ ảnh mẫu của bạn để kiểm thử nhanh
+    const DEMO_STUDENTS = {
+      "062315004404": {
+        hoTen: "Bùi Nguyễn Gia Hân",
+        cccd: "062315004404",
+        gioiTinh: "Nữ",
+        ngaySinh: "20/10/2015",
+        danToc: "Kinh",
+        truongTieuHoc: "Trường Tiểu học Nguyễn Văn Trỗi"
+      },
+      "062315003513": {
+        hoTen: "Siu Minh Tuệ",
+        cccd: "062315003513",
+        gioiTinh: "Nữ",
+        ngaySinh: "21/03/2015",
+        danToc: "Ba na",
+        truongTieuHoc: "Trường Tiểu học Kim Đồng"
+      },
+      "062315000549": {
+        hoTen: "Trần Phương Thảo",
+        cccd: "062315000549",
+        gioiTinh: "Nữ",
+        ngaySinh: "11/06/2015",
+        danToc: "Kinh",
+        truongTieuHoc: "Trường Tiểu học Kim Đồng"
+      },
+      "062315003298": {
+        hoTen: "Trần Bảo Ngọc",
+        cccd: "062315003298",
+        gioiTinh: "Nữ",
+        ngaySinh: "18/04/2015",
+        danToc: "Kinh",
+        truongTieuHoc: "Trường TH và THCS xã Đăk Hà"
+      }
+    };
+
+    let nonNumericAlertTimeout = null;
+
+    // Hiển thị cảnh báo nhập ký tự phi số
+    function showNonNumericAlert() {
+      const alertDiv = document.getElementById('nonNumericAlert');
+      alertDiv.style.display = 'block';
+      
+      if (nonNumericAlertTimeout) {
+        clearTimeout(nonNumericAlertTimeout);
+      }
+      
+      nonNumericAlertTimeout = setTimeout(() => {
+        alertDiv.style.display = 'none';
+      }, 2500);
+    }
+
+    // Validate Input: Only allows numbers, shows clear button, and handles live-validation hints
+    function validateInput(input) {
+      const originalValue = input.value;
+      const cleanValue = originalValue.replace(/[^0-9]/g, '');
+      
+      // Phát hiện người dùng gõ ký tự phi số
+      if (originalValue !== cleanValue) {
+        showNonNumericAlert();
+      }
+      
+      input.value = cleanValue;
+      
+      const clearBtn = document.getElementById('clearBtn');
+      if (input.value.length > 0) {
+        clearBtn.style.display = 'block';
+      } else {
+        clearBtn.style.display = 'none';
+      }
+      
+      // Live validation hint
+      const hint = document.getElementById('validationHint');
+      const hintText = document.getElementById('validationHintText');
+      
+      if (input.value.length === 0) {
+        hint.style.display = 'none';
+      } else if (input.value.length < 12) {
+        hint.style.display = 'block';
+        hint.style.color = '#fda4af'; // light red
+        hintText.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Đã nhập: ${input.value.length}/12 số. Vui lòng nhập đủ 12 chữ số.`;
+      } else if (input.value.length === 12) {
+        hint.style.display = 'block';
+        hint.style.color = '#34d399'; // light green
+        hintText.innerHTML = `<i class="fa-solid fa-circle-check"></i> Đã nhập đủ 12 chữ số hợp lệ.`;
+      }
+      
+      // Hide main error card
+      hideError();
+    }
+
+    // Clear search input
+    function clearSearchInput() {
+      const input = document.getElementById('cccdInput');
+      input.value = '';
+      document.getElementById('clearBtn').style.display = 'none';
+      document.getElementById('validationHint').style.display = 'none';
+      document.getElementById('nonNumericAlert').style.display = 'none';
+      if (nonNumericAlertTimeout) {
+        clearTimeout(nonNumericAlertTimeout);
+      }
+      hideError();
+      input.focus();
+    }
+
+    // Display error message
+    function showError(message) {
+      const container = document.getElementById('statusContainer');
+      const msgElement = document.getElementById('statusMessage');
+      msgElement.textContent = message;
+      container.style.display = 'block';
+    }
+
+    // Hide error message
+    function hideError() {
+      document.getElementById('statusContainer').style.display = 'none';
+    }
+
+    // Print result card
+    function printResult() {
+      window.print();
+    }
+
+    // Download Result Card as Image
+    function downloadCardAsImage() {
+      const card = document.getElementById('admissionCard');
+      const submitBtn = document.querySelector('.btn-action.primary');
+      
+      // Temporary change styles to capture with premium look even on small screen
+      const originalStyle = card.style.cssText;
+      card.style.width = '640px';
+      card.style.maxWidth = '100%';
+      
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Đang tạo ảnh...</span>';
+      submitBtn.disabled = true;
+
+      // Use html2canvas to convert the HTML element into image
+      html2canvas(card, {
+        backgroundColor: '#0f172a', // Keeps the original dark aesthetic
+        scale: 2, // Double quality
+        useCORS: true,
+        logging: false
+      }).then(canvas => {
+        // Revert styles
+        card.style.cssText = originalStyle;
+        submitBtn.innerHTML = '<i class="fa-solid fa-image"></i> <span>Tải kết quả (Ảnh)</span>';
+        submitBtn.disabled = false;
+
+        // Download action
+        const link = document.createElement('a');
+        const studentName = document.getElementById('resHoTen').textContent.trim() || 'HocSinh';
+        link.download = `KetQuaTuyenSinh_${studentName.replace(/\s+/g, '_')}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      }).catch(err => {
+        console.error('Lỗi khi chụp hình thẻ:', err);
+        card.style.cssText = originalStyle;
+        submitBtn.innerHTML = '<i class="fa-solid fa-image"></i> <span>Tải kết quả (Ảnh)</span>';
+        submitBtn.disabled = false;
+        alert('Tạo file ảnh thất bại. Bạn có thể sử dụng chức năng In để xuất ra file PDF thay thế.');
+      });
+    }
+
+    // Form Submit Search Event Handler
+    async function handleSearch(event) {
+      event.preventDefault();
+      hideError();
+      
+      const cccdVal = document.getElementById('cccdInput').value.trim();
+      
+      // Perform strict validation
+      if (cccdVal.length !== 12 || !/^\d{12}$/.test(cccdVal)) {
+        showError("Số CCCD không hợp lệ. Vui lòng nhập chính xác 12 chữ số.");
+        return;
+      }
+
+      const submitBtn = document.getElementById('submitBtn');
+      const loader = document.getElementById('loader');
+      const resultContainer = document.getElementById('resultContainer');
+      const searchCard = document.getElementById('searchCard');
+
+      // UI loading state
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Đang tìm kiếm...</span>';
+      resultContainer.style.display = 'none';
+      loader.style.display = 'flex';
+
+      // 1. Kiểm tra Chế độ Demo
+      const isDemoMode = GOOGLE_SCRIPT_URL === "YOUR_GOOGLE_SCRIPT_URL_HERE" || GOOGLE_SCRIPT_URL.trim() === "";
+
+      if (isDemoMode) {
+        // Giả lập độ trễ mạng để tăng trải nghiệm UX thực tế
+        await new Promise(resolve => setTimeout(resolve, 1200));
+        
+        loader.style.display = 'none';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> <span>Tra cứu kết quả</span>';
+
+        if (DEMO_STUDENTS[cccdVal]) {
+          const info = DEMO_STUDENTS[cccdVal];
+          bindStudentData(info);
+          
+          // Ẩn hộp thoại tìm kiếm và hiển thị kết quả
+          searchCard.style.display = 'none';
+          document.getElementById('validationHint').style.display = 'none';
+          resultContainer.style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          showError("Không tìm thấy thông tin tuyển sinh hợp lệ với Số CCCD đã cung cấp (Dữ liệu Demo hiện có các số CCCD trong ảnh ví dụ: 062315004404, 062315003513, 062315000549, 062315003298).");
+        }
+        return;
+      }
+
+      // 2. Chế độ kết nối API thực tế
+      try {
+        const targetUrl = `${GOOGLE_SCRIPT_URL}?cccd=${encodeURIComponent(cccdVal)}`;
+        const response = await fetch(targetUrl);
+        
+        if (!response.ok) {
+          throw new Error(`Mạng kết nối không ổn định (Status: ${response.status})`);
+        }
+
+        const resData = await response.json();
+
+        if (resData.success) {
+          bindStudentData(resData.data);
+          // Ẩn hộp thoại tìm kiếm và hiển thị kết quả
+          searchCard.style.display = 'none';
+          document.getElementById('validationHint').style.display = 'none';
+          resultContainer.style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          showError(resData.message || "Không tìm thấy kết quả phù hợp với số CCCD này.");
+        }
+
+      } catch (error) {
+        console.error('Lỗi khi fetch dữ liệu:', error);
+        showError("Không thể kết nối với máy chủ dữ liệu. Quý phụ huynh vui lòng kiểm tra kết nối mạng và thử lại sau ít phút.");
+      } finally {
+        loader.style.display = 'none';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> <span>Tra cứu kết quả</span>';
+      }
+    }
+
+    // Bind data to DOM
+    function bindStudentData(info) {
+      document.getElementById('resHoTen').textContent = info.hoTen || '---';
+      document.getElementById('resCCCD').textContent = info.cccd || '---';
+      document.getElementById('resGioiTinh').textContent = info.gioiTinh || '---';
+      document.getElementById('resNgaySinh').textContent = info.ngaySinh || '---';
+      document.getElementById('resDanToc').textContent = info.danToc || '---';
+      document.getElementById('resTruongTieuHoc').textContent = info.truongTieuHoc || '---';
+    }
+
+    // Reset search state to allow searching again
+    function resetSearch() {
+      // 1. Hide results container
+      document.getElementById('resultContainer').style.display = 'none';
+      
+      // 2. Show search card again
+      document.getElementById('searchCard').style.display = 'block';
+      
+      // 3. Reset inputs
+      clearSearchInput();
+      
+      // 4. Smooth scroll to top of page
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
