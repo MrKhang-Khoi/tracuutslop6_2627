@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="data:,">
   
   <!-- SEO Meta Tags -->
   <title>Cổng Tra Cứu Kết Quả Tuyển Sinh Lớp 6 | Năm học 2026 - 2027</title>
@@ -801,6 +802,59 @@
     .btn-modal-close:hover {
       filter: brightness(1.1);
     }
+
+    /* Floating Zalo Button for Constant Support Access */
+    .zalo-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: linear-gradient(135deg, #0068ff 0%, #0053cc 100%);
+      color: white !important;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0, 104, 255, 0.4);
+      z-index: 999;
+      transition: var(--transition);
+      cursor: pointer;
+      text-decoration: none !important;
+      animation: pulse-zalo 2s infinite;
+    }
+    
+    .zalo-float i {
+      font-size: 1.4rem;
+      margin-bottom: 2px;
+    }
+    
+    .zalo-float span {
+      font-size: 0.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .zalo-float:hover {
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 104, 255, 0.6);
+      filter: brightness(1.1);
+    }
+    
+    @keyframes pulse-zalo {
+      0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.6); }
+      70% { box-shadow: 0 0 0 15px rgba(0, 104, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0); }
+    }
+
+    /* Hide floating button in print mode */
+    @media print {
+      .zalo-float {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -944,10 +998,10 @@
         </div>
         
         <div class="admission-card-footer">
-          <i class="fa-solid fa-seal-question"></i>
+          <i class="fa-solid fa-circle-info"></i>
           <div class="footer-note">
             Giấy xác nhận này dùng để làm hồ sơ nhập học chính thức vào lớp 6. 
-            Mọi thắc mắc xin vui lòng liên hệ Ban tuyển sinh để được giải đáp.
+            Mọi thắc mắc xin vui lòng liên hệ Ban tuyển sinh hoặc tham gia <a href="https://zalo.me/g/jamolj6fbjzqsjylrarp" target="_blank" style="color: var(--accent); font-weight: 700; text-decoration: underline;">Nhóm Zalo hỗ trợ giải đáp tuyển sinh</a> để được giải đáp trực tiếp.
           </div>
         </div>
         
@@ -1285,5 +1339,11 @@
       <button class="btn-modal-close" onclick="closeImageModal()">Đóng cửa sổ</button>
     </div>
   </div>
+
+  <!-- Floating Zalo Button for Constant Support Access -->
+  <a href="https://zalo.me/g/jamolj6fbjzqsjylrarp" target="_blank" class="zalo-float" title="Hỗ trợ qua Zalo">
+    <i class="fa-solid fa-comments"></i>
+    <span>Hỗ trợ</span>
+  </a>
 </body>
 </html>
