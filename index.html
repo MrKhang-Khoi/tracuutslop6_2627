@@ -61,9 +61,6 @@
       background-color: var(--primary);
       color: var(--text-main);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       overflow-x: hidden;
       line-height: 1.6;
       position: relative;
@@ -136,10 +133,11 @@
       display: none;
     }
 
-    /* Main Container — natural flow, fills screen width */
+    /* Main Container */
     main {
       width: 100%;
       max-width: 680px;
+      margin: 0 auto;
       padding: 0 1.25rem 2.5rem;
       z-index: 10;
     }
@@ -548,17 +546,19 @@
 
     /* Footer styling */
     footer {
-      padding: 2rem 1.5rem;
+      width: 100%;
+      padding: 1.5rem 1rem;
       text-align: center;
-      border-top: 1px solid rgba(15, 23, 42, 0.05);
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
       background-color: #ffffff;
       z-index: 10;
+      margin-top: auto;
     }
 
     footer p {
       max-width: 680px;
       margin: 0 auto;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       color: #64748b;
       line-height: 1.6;
       font-weight: 400;
@@ -614,94 +614,111 @@
     /* ==========================================================================
        RESPONSIVE DESIGN BREAKPOINTS - FIX MOBILE LAYOUT TO BE STUNNING
        ========================================================================== */
-     @media (max-width: 600px) {
+    @media (max-width: 600px) {
       main {
-        padding: 0 1rem 2rem;
+        padding: 0 0.85rem 1.5rem;
       }
 
       .page-header {
-        padding: 1.75rem 0 1.25rem;
+        padding: 1.5rem 0 1rem;
       }
 
       .logo-container {
-        width: 60px;
-        height: 60px;
-        margin-bottom: 0.85rem;
+        width: 56px;
+        height: 56px;
+        margin-bottom: 0.75rem;
       }
 
       .logo-container i {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
       }
 
       h1 {
-        font-size: 1.3rem;
-        line-height: 1.45;
-        padding: 0 0.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+        padding: 0;
       }
 
       .search-card {
-        padding: 1.5rem 1.25rem;
+        padding: 1.25rem 1rem;
         border-radius: var(--radius-md);
-        margin-bottom: 1.25rem;
+        margin-bottom: 0;
       }
 
       .search-label {
-        font-size: 1rem;
-        margin-bottom: 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 0.85rem;
         line-height: 1.5;
       }
 
       .search-input {
-        font-size: 1.2rem;
-        padding: 0.95rem 1rem 0.95rem 2.8rem;
-        letter-spacing: 2px;
+        font-size: 1.15rem;
+        padding: 0.85rem 1rem 0.85rem 2.6rem;
+        letter-spacing: 1.5px;
       }
 
       .input-wrapper i {
-        left: 1rem;
-      }
-
-      .guide-card {
-        padding: 1.25rem;
-      }
-
-      .guide-title {
+        left: 0.9rem;
         font-size: 1rem;
       }
 
+      .btn-search {
+        padding: 0.85rem;
+        font-size: 1rem;
+      }
+
+      .guide-card {
+        padding: 1rem;
+        margin-top: 1rem;
+      }
+
+      .guide-title {
+        font-size: 0.95rem;
+      }
+
       .guide-list {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
+        line-height: 1.55;
+      }
+
+      footer {
+        padding: 1.25rem 0.85rem;
+        padding-bottom: 5rem; /* Space for Zalo float button */
+      }
+
+      footer p {
+        font-size: 0.8rem;
       }
 
       .admission-card-wrapper {
         border-radius: var(--radius-md);
-        margin-bottom: 1.25rem;
+        margin-bottom: 1rem;
       }
 
       .admission-card-header {
-        padding: 1.25rem;
+        padding: 1rem;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.75rem;
+        gap: 0.6rem;
       }
 
       .card-header-logo .doc-title {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
       .badge-admitted {
         align-self: flex-start;
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
+        padding: 0.35rem 0.75rem;
+        font-size: 0.78rem;
       }
 
       .admission-card-body {
-        padding: 1.5rem 1.25rem;
+        padding: 1.25rem 1rem;
       }
 
       .student-info-grid {
         grid-template-columns: 1fr;
-        gap: 1.1rem;
+        gap: 1rem;
       }
 
       .grid-full-width {
@@ -709,7 +726,7 @@
       }
 
       .info-label {
-        font-size: 0.8rem;
+        font-size: 0.78rem;
       }
 
       .info-value {
@@ -717,23 +734,43 @@
       }
 
       .info-value.highlight-name {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
       }
 
       .admission-card-footer {
-        padding: 1.25rem;
+        padding: 1rem;
         align-items: flex-start;
       }
 
       .actions-panel {
         flex-direction: column;
-        gap: 0.75rem;
+        gap: 0.65rem;
       }
-      
+
       .btn-action {
         width: 100%;
-        padding: 0.9rem;
-        font-size: 1rem;
+        padding: 0.85rem;
+        font-size: 0.95rem;
+      }
+
+      /* Zalo float adjustments for mobile */
+      .zalo-float {
+        bottom: 16px;
+        right: 12px;
+        height: 48px;
+        padding: 0 0.9rem 0 0.7rem;
+        gap: 0.45rem;
+        border-radius: 24px;
+        font-size: 0.82rem;
+      }
+
+      .zalo-float svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .zalo-float span {
+        font-size: 0.82rem;
       }
     }
 
@@ -853,34 +890,33 @@
       filter: brightness(1.05);
     }
 
-    /* Floating Zalo Button — Large, Always Visible, Accessible */
+    /* Floating Zalo Button — Always Visible, High Contrast */
     .zalo-float {
       position: fixed;
-      bottom: 20px;
+      bottom: 24px;
       right: 16px;
-      background: linear-gradient(135deg, #0068ff 0%, #0053cc 100%);
+      background: linear-gradient(135deg, #0068ff 0%, #0050c8 100%);
       color: white !important;
       display: flex;
       align-items: center;
-      gap: 0.55rem;
-      padding: 0 1.1rem 0 0.9rem;
-      height: 54px;
-      border-radius: 27px;
-      box-shadow: 0 4px 20px rgba(0, 104, 255, 0.45);
-      z-index: 999;
+      gap: 0.5rem;
+      padding: 0 1rem 0 0.85rem;
+      height: 52px;
+      border-radius: 26px;
+      box-shadow: 0 4px 16px rgba(0, 80, 200, 0.5), 0 0 0 3px rgba(255, 255, 255, 0.9);
+      z-index: 9999;
       transition: var(--transition);
       cursor: pointer;
       text-decoration: none !important;
-      animation: pulse-zalo 2.5s infinite;
+      animation: pulse-zalo 2.5s ease-in-out infinite;
     }
     
-    .zalo-float i {
-      font-size: 1.6rem;
+    .zalo-float svg {
       flex-shrink: 0;
     }
     
     .zalo-float span {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 700;
       white-space: nowrap;
       letter-spacing: 0.2px;
@@ -888,14 +924,13 @@
     
     .zalo-float:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 28px rgba(0, 104, 255, 0.6);
+      box-shadow: 0 8px 24px rgba(0, 80, 200, 0.6), 0 0 0 3px rgba(255, 255, 255, 1);
       filter: brightness(1.08);
     }
     
     @keyframes pulse-zalo {
-      0% { box-shadow: 0 4px 20px rgba(0, 104, 255, 0.45); }
-      50% { box-shadow: 0 4px 30px rgba(0, 104, 255, 0.75); }
-      100% { box-shadow: 0 4px 20px rgba(0, 104, 255, 0.45); }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     /* Hide floating button in print mode */
