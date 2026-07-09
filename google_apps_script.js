@@ -73,18 +73,17 @@ function doGet(e) {
       if (sheetCCCD === searchCCCD) {
         var status = row[7] ? row[7].toString().trim().toLowerCase() : "";
         
-        // Điều kiện: Chỉ hiển thị nếu Trạng thái là "Yes"
-        if (status === "yes") {
-          foundStudent = {
-            stt: row[0] ? row[0].toString().trim() : "",
-            hoTen: row[1] ? row[1].toString().trim() : "",
-            cccd: sheetCCCD,
-            gioiTinh: row[3] ? row[3].toString().trim() : "",
-            ngaySinh: row[4] ? row[4].toString().trim() : "",
-            danToc: row[5] ? row[5].toString().trim() : "",
-            truongTieuHoc: row[6] ? row[6].toString().trim() : ""
-          };
-        }
+        // Trả về dữ liệu học sinh kèm trạng thái cột H (yes/no)
+        foundStudent = {
+          stt: row[0] ? row[0].toString().trim() : "",
+          hoTen: row[1] ? row[1].toString().trim() : "",
+          cccd: sheetCCCD,
+          gioiTinh: row[3] ? row[3].toString().trim() : "",
+          ngaySinh: row[4] ? row[4].toString().trim() : "",
+          danToc: row[5] ? row[5].toString().trim() : "",
+          truongTieuHoc: row[6] ? row[6].toString().trim() : "",
+          trangThai: status
+        };
         break; // Đã tìm thấy CCCD (CCCD là duy nhất), dừng vòng lặp
       }
     }

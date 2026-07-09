@@ -408,6 +408,23 @@
       box-shadow: 0 4px 12px rgba(5, 150, 105, 0.05);
     }
 
+    /* Decorative Badge "Không Trúng Tuyển" */
+    .badge-rejected {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(220, 38, 38, 0.08);
+      border: 1px solid rgba(220, 38, 38, 0.25);
+      color: var(--error);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.05);
+    }
+
     .admission-card-body {
       padding: 2.25rem 2rem;
     }
@@ -724,7 +741,7 @@
         font-size: 1.05rem;
       }
 
-      .badge-admitted {
+      .badge-admitted, .badge-rejected {
         align-self: center;
         padding: 0.35rem 0.75rem;
         font-size: 0.78rem;
@@ -1071,9 +1088,9 @@
         <div class="admission-card-header">
           <div class="card-header-logo">
             <span class="school-year">Tuyển sinh lớp 6 năm học 2026-2027</span>
-            <span class="doc-title">Giấy xác nhận trúng tuyển lớp 6</span>
+            <span class="doc-title" id="resDocTitle">Giấy xác nhận trúng tuyển lớp 6</span>
           </div>
-          <div class="badge-admitted">
+          <div class="badge-admitted" id="resBadge">
             <svg viewBox="0 0 512 512" width="16" height="16" fill="currentColor" style="display: inline-block; vertical-align: middle;">
               <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/>
             </svg>
@@ -1122,7 +1139,7 @@
             <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144a32 32 0 1 1 0-64 32 32 0 1 1 0 64z"/>
           </svg>
           <div class="footer-note">
-            Giấy xác nhận này dùng để làm hồ sơ nhập học chính thức vào lớp 6. 
+            <span id="resFooterNoteText">Giấy xác nhận này dùng để làm hồ sơ nhập học chính thức vào lớp 6.</span> 
             Mọi thắc mắc xin vui lòng liên hệ Ban tuyển sinh hoặc tham gia <a href="https://zalo.me/g/jamolj6fbjzqsjylrarp" target="_blank" style="color: var(--accent); font-weight: 700; text-decoration: underline;">Nhóm Zalo hỗ trợ giải đáp tuyển sinh</a> để được giải đáp trực tiếp.
           </div>
         </div>
@@ -1170,7 +1187,8 @@
         gioiTinh: "Nữ",
         ngaySinh: "20/10/2015",
         danToc: "Kinh",
-        truongTieuHoc: "Trường Tiểu học Nguyễn Văn Trỗi"
+        truongTieuHoc: "Trường Tiểu học Nguyễn Văn Trỗi",
+        trangThai: "yes"
       },
       "062315003513": {
         hoTen: "Siu Minh Tuệ",
@@ -1178,7 +1196,8 @@
         gioiTinh: "Nữ",
         ngaySinh: "21/03/2015",
         danToc: "Ba na",
-        truongTieuHoc: "Trường Tiểu học Kim Đồng"
+        truongTieuHoc: "Trường Tiểu học Kim Đồng",
+        trangThai: "yes"
       },
       "062315000549": {
         hoTen: "Trần Phương Thảo",
@@ -1186,7 +1205,8 @@
         gioiTinh: "Nữ",
         ngaySinh: "11/06/2015",
         danToc: "Kinh",
-        truongTieuHoc: "Trường Tiểu học Kim Đồng"
+        truongTieuHoc: "Trường Tiểu học Kim Đồng",
+        trangThai: "yes"
       },
       "062315003298": {
         hoTen: "Trần Bảo Ngọc",
@@ -1194,7 +1214,17 @@
         gioiTinh: "Nữ",
         ngaySinh: "18/04/2015",
         danToc: "Kinh",
-        truongTieuHoc: "Trường TH và THCS xã Đăk Hà"
+        truongTieuHoc: "Trường TH và THCS xã Đăk Hà",
+        trangThai: "yes"
+      },
+      "062215001345": {
+        hoTen: "Nguyễn Hùng Thắng",
+        cccd: "062215001345",
+        gioiTinh: "Nam",
+        ngaySinh: "12/12/2015",
+        danToc: "Kinh",
+        truongTieuHoc: "Trường Tiểu học Nguyễn Bá Ngọc",
+        trangThai: "no"
       }
     };
 
@@ -1437,6 +1467,43 @@
       document.getElementById('resNgaySinh').textContent = info.ngaySinh || '---';
       document.getElementById('resDanToc').textContent = info.danToc || '---';
       document.getElementById('resTruongTieuHoc').textContent = info.truongTieuHoc || '---';
+
+      const badge = document.getElementById('resBadge');
+      const docTitle = document.getElementById('resDocTitle');
+      const footerNoteText = document.getElementById('resFooterNoteText');
+      const printBtnText = document.querySelector('button[onclick="printResult()"] span');
+
+      const status = (info.trangThai || 'yes').trim().toLowerCase();
+
+      if (status === 'no') {
+        // Trạng thái: Không trúng tuyển
+        badge.className = 'badge-rejected';
+        badge.innerHTML = `
+          <svg viewBox="0 0 512 512" width="16" height="16" fill="currentColor" style="display: inline-block; vertical-align: middle;">
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/>
+          </svg>
+          <span>Không Trúng Tuyển</span>
+        `;
+        docTitle.textContent = 'Kết quả tuyển sinh lớp 6';
+        footerNoteText.textContent = 'Không trúng tuyển vì ngoài địa bàn tuyển sinh.';
+        footerNoteText.style.color = 'var(--error)';
+        footerNoteText.style.fontWeight = '700';
+        if (printBtnText) printBtnText.textContent = 'In kết quả tra cứu';
+      } else {
+        // Trạng thái: Đã trúng tuyển
+        badge.className = 'badge-admitted';
+        badge.innerHTML = `
+          <svg viewBox="0 0 512 512" width="16" height="16" fill="currentColor" style="display: inline-block; vertical-align: middle;">
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/>
+          </svg>
+          <span>Đã Trúng Tuyển</span>
+        `;
+        docTitle.textContent = 'Giấy xác nhận trúng tuyển lớp 6';
+        footerNoteText.textContent = 'Giấy xác nhận này dùng để làm hồ sơ nhập học chính thức vào lớp 6.';
+        footerNoteText.style.color = '';
+        footerNoteText.style.fontWeight = '';
+        if (printBtnText) printBtnText.textContent = 'In giấy xác nhận';
+      }
     }
 
     // Reset search state to allow searching again
